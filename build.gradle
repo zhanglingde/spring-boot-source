@@ -1,0 +1,28 @@
+plugins {
+	id "org.jetbrains.kotlin.jvm" apply false // https://youtrack.jetbrains.com/issue/KT-30276
+}
+
+description = "Spring Boot Build"
+
+defaultTasks 'build'
+
+allprojects {
+	group "org.springframework.boot"
+
+	repositories {
+		// 本地仓库位于USER_HOME/.m2/repository
+		mavenLocal()
+		maven { url "http://maven.aliyun.com/nexus/content/groups/public/"}
+		mavenCentral()
+		if (!version.endsWith('RELEASE')) {
+			maven { url "https://repo.spring.io/milestone" }
+		}
+		if (version.endsWith('BUILD-SNAPSHOT')) {
+			maven { url "https://repo.spring.io/snapshot" }
+		}
+	}
+
+	configurations.all {
+		resolutionStrategy.cacheChangingModulesFor 60, "minutes"
+	}
+}
