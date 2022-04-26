@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group 'org.springframework.boot'
+version '2.3.0.RELEASE'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    // 添加 SpringBoot 依赖
+    compile(project(":spring-boot-project:spring-boot"))
+    compile(project(":spring-boot-project:spring-boot-actuator"))
+    compile(project(":spring-boot-project:spring-boot-actuator-autoconfigure"))
+    compile(project(":spring-boot-project:spring-boot-autoconfigure"))
+    compile(project(":spring-boot-project:spring-boot-cli"))
+//    compile(project(":spring-boot-project:spring-boot-dependencies"))
+    compile(project(":spring-boot-project:spring-boot-devtools"))
+    compile(project(":spring-boot-project:spring-boot-docs"))
+//    compile(project(":spring-boot-project:spring-boot-parent"))
+    compile(project(":spring-boot-project:spring-boot-properties-migrator"))
+//    compile(project(":spring-boot-project:spring-boot-starters"))
+    compile(project(":spring-boot-project:spring-boot-test"))
+    compile(project(":spring-boot-project:spring-boot-test-autoconfigure"))
+//    compile(project(":spring-boot-project:spring-boot-tools"))
+}
+
+test {
+    useJUnitPlatform()
+}
